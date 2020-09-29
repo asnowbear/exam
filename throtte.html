@@ -1,0 +1,28 @@
+<html>
+  <body>
+    <div id = '1a' style="overflow: auto;width: 120px; height: 200px; border: blue 1px solid">
+      <div style="width: 200px;height: 800px;border: red 1px solid;">
+      </div>
+    </div>
+  </body>
+
+  <script >
+    function throtte(fn, delay) {
+      var prevTime = +new Date()
+      return function() {
+        var currTime = +new Date()
+        if (currTime - prevTime > delay) {
+          fn.apply(this, arguments)
+          prevTime = currTime
+        }
+      }
+    }
+
+    var ts = throtte(function() {
+      console.log('dddddddd')
+    }, 500)
+
+    // window.onscroll = ts
+    document.getElementById('1a').addEventListener('scroll', ts)
+  </script>
+</html>
