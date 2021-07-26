@@ -22,6 +22,4 @@ function instanceOf1(left,  right) {
 
     proto = proto.__proto__
   }
-
-
 }
